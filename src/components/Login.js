@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Login.css"; 
+
 const Login = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -25,9 +26,9 @@ const Login = () => {
         "Content-Type": "application/json",
       },
     });
-    result = await result.json();
-    console.warn(result);
-    if (result.name) {
+    if (result.status === 200) {
+      result = await result.json();
+      console.warn(result);
       localStorage.setItem("user", JSON.stringify(result));
       navigate("/home");
     } else {
