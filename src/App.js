@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import FacultyRegister from "./components/FacultyRegister";
-import HODRegister from "./components/HODRegister";
-import RoomRegister from "./components/RoomRegister";
+import Login from "./components/LoginRegister/Login";
+import Register from "./components/LoginRegister/Register";
+import FacultyRegister from "./components/LoginRegister/FacultyRegister";
+import HODRegister from "./components/LoginRegister/HODRegister";
+import RoomRegister from "./components/LoginRegister/RoomRegister";
 
 export default function App() {
   return (

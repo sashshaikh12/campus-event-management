@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/Login.css"; 
+import "../../styles/Login.css"; 
 import NavBar from "./RegistrationNavbar";
 
 
-export default function HODRegister() {
+export default function Register() {
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [department, setDepartment] = React.useState("");
   const [phone, setPhone] = React.useState("");
+  const [address, setAddress] = React.useState("");
+  const [year, setYear] = React.useState("");
   const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
@@ -37,6 +39,8 @@ export default function HODRegister() {
     } else if (!phoneRegex.test(phone)) {
         newErrors.phone = "Invalid phone number format";
     }
+    if (!address) newErrors.address = "Address is required";
+    if (!year) newErrors.year = "Year is required";
     if (isNaN(phone)) newErrors.phone = "Phone number must be a number";
     return newErrors;
   };
@@ -47,9 +51,9 @@ export default function HODRegister() {
       setErrors(newErrors);
       return;
     }
-    const reqbody = { name, email, password, department,phone , role:'hod'};
+    const reqbody = { name, email, password, department, phone, address, year };
     console.warn(reqbody);
-    let result = await fetch("http://localhost:5000/faculty-register", {
+    let result = await fetch("http://localhost:5000/register", {
       method: "post",
       body: JSON.stringify(reqbody),
       headers: {
@@ -68,7 +72,7 @@ export default function HODRegister() {
     <div>
       <NavBar className="NavBarWrapper"/>
       <form className="login">
-        <h1>Head of Department</h1>
+        <h1>Register</h1>
         <input
           type="text"
           id="username"
@@ -89,6 +93,8 @@ export default function HODRegister() {
           required
         />
         {errors.email && <p className="error">{errors.email}</p>}
+        <div className="form-row">
+          <div className="form-group">
             <select
               id="department"
               className="LoginInput"
@@ -105,6 +111,27 @@ export default function HODRegister() {
               <option value="MECH">MECH</option>
             </select>
             {errors.department && <p className="error">{errors.department}</p>}
+          </div>
+          
+          <div className="form-group">
+          <select
+              id="year"
+              className="LoginInput"
+              value={year}
+              onChange={(e) => setYear(e.target.value)}
+              required
+          >
+                  <option value="" disabled>
+                      Year
+                  </option>
+                  <option value="1st Year">1</option>
+                  <option value="2nd Year">2</option>
+                  <option value="3rd Year">3</option>
+                  <option value="4th Year">4</option>
+              </select>
+              {errors.year && <p className="error">{errors.year}</p>}
+          </div>
+        </div>
         <input
               type="phone"
               id="Phone"
@@ -115,6 +142,16 @@ export default function HODRegister() {
               required
             />
             {errors.phone && <p className="error">{errors.phone}</p>}
+        <input
+          type="text"
+          id="address"
+          placeholder="Enter your address"
+          className="LoginInput"
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
+          required
+        />
+        {errors.address && <p className="error">{errors.address}</p>}
         <input
           type="password"
           id="password"
