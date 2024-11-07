@@ -52,7 +52,7 @@
 }
 
 .nav-link.selected {
-  background-color: red;
+  background-color: #F05941;
   animation: glow 1.5s infinite alternate;
 }
 
@@ -63,4 +63,9 @@
   100% {
     box-shadow: 0 0 100px rgba(139, 0, 0, 0.8), 0 0 120px rgba(139, 0, 0, 0.8), 0 0 140px rgba(139, 0, 0, 0.8);
   }
+}
+
+
+.login {
+  background-color: black;
 }

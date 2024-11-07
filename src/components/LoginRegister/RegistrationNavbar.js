@@ -1,6 +1,6 @@
 import React  , {useState} from "react";
 import { Link , useLocation} from "react-router-dom";
-import "../../styles/RegistrationNavbar.css"; // Ensure the CSS file is correctly imported
+// import "../../styles/RegistrationNavbar.css"; // Ensure the CSS file is correctly imported
 
 const NavBar = () => {
   const location = useLocation();

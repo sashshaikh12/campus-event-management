@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "./RegistrationNavbar";
-import "../../styles/Login.css"; // Ensure the CSS file is correctly imported
+// import "../../styles/Login.css"; // Ensure the CSS file is correctly imported
 
 export default function FacultyRegister() {
   const [name, setName] = useState("");
