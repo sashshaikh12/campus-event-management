@@ -1,0 +1,104 @@
+.studentNav {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+    height: 120px;
+}
+
+.peslogo{
+    position: relative;
+    top: 10px;
+    width: 200px;
+    height: 100px;
+}
+
+.centerButtons {
+    display: flex;
+    gap: 40px;
+    margin: auto; /* Center align buttons in the flex container */
+    position: relative;
+    left: 7%;
+}
+
+/* Style buttons */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+button:active {
+    background-color: #004080;
+    transform: scale(0.98);
+}
+
+/* Profile button with different color */
+.ProfileButton {
+    background-color: #28a745;
+    margin-left: auto; /* Pushes Profile button to the right */
+}
+
+.ProfileButton:hover {
+    background-color: #218838;
+}
+
+.SliderBox{
+    width: 650px;
+    height: 420px;
+    position: absolute;
+    left: 30%;
+    top: 35%;
+    border-width: 100%;
+    border: 10px solid rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+}
+
+@keyframes slideIn {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideOut {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+  }
+
+
+.SliderImgs {
+    position: absolute;
+    width: 650px;
+    height: 420px;
+    animation-duration: 2s;
+  }
+  
+  .slide-in {
+    animation-name: slideIn;
+  }
+  
+  .slide-out {
+    animation-name: slideOut;
+  }

@@ -5,6 +5,7 @@ import Register from "./components/LoginRegister/Register";
 import FacultyRegister from "./components/LoginRegister/FacultyRegister";
 import HODRegister from "./components/LoginRegister/HODRegister";
 import RoomRegister from "./components/LoginRegister/RoomRegister";
+import StudentDash from "./components/LoginRegister/studentDash";
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="faculty-register" element={<FacultyRegister />} />
         <Route path="hod-register"  element={<HODRegister/>}/>
         <Route path="room-register" element={<RoomRegister/>}/>
+        <Route path = "/studentDash" element = {<StudentDash />} />
       </Routes>
     </BrowserRouter>
   );
