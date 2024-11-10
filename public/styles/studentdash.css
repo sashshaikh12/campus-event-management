@@ -2,15 +2,18 @@
     display: flex;
     align-items: center;
     padding: 0 20px;
-    background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);
+    /*background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);*/
+    background: white;
     height: 120px;
+    border-bottom-right-radius: 40%;
+    border-bottom-left-radius: 40%;
 }
 
 .peslogo{
     position: relative;
-    top: 10px;
+    bottom: 8%;
     width: 200px;
-    height: 100px;
+    height: 80px;
 }
 
 .centerButtons {
@@ -26,7 +29,7 @@ button {
     padding: 10px 20px;
     font-size: 16px;
     color: #fff;
-    background-color: #007bff;
+    background-color: #563A9C;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -48,6 +51,7 @@ button:active {
 .ProfileButton {
     background-color: #28a745;
     margin-left: auto; /* Pushes Profile button to the right */
+    margin-bottom: 1%;
 }
 
 .ProfileButton:hover {
@@ -60,9 +64,6 @@ button:active {
     position: absolute;
     left: 30%;
     top: 35%;
-    border-width: 100%;
-    border: 10px solid rgba(0, 0, 0, 0.4);
-    border-radius: 10px;
 }
 
 @keyframes slideIn {
@@ -101,4 +102,8 @@ button:active {
   
   .slide-out {
     animation-name: slideOut;
+  }
+
+  body {
+    overflow: hidden; /* Hide scrollbars */
   }
