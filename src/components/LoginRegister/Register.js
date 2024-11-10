@@ -63,7 +63,7 @@ export default function Register() {
     console.warn(result);
     localStorage.setItem("user", result);
     if (result) {
-      navigate("/home");
+      navigate("/studentdash");
     }
   };
 

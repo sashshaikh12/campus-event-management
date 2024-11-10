@@ -7,6 +7,9 @@
   position: relative;
   border-radius: 10px; /* Added border radius */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added shadow for a 3D effect */
+  width: 30%;
+  left: 32%;
+  margin-top: 3%;  
 }
 
 .nav-link {
