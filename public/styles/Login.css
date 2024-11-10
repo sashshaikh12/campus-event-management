@@ -16,6 +16,9 @@ body {
   box-shadow: 0 10px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   width: 400px;
+  position: relative;
+  left: 35%;
+  top: 15%;
 }
 
 .login h1 {
