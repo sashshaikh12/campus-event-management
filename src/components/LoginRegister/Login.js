@@ -39,7 +39,7 @@ const Login = () => {
 
   return (
     <form className="login">
-      <h1>SIGN IN</h1>
+      <h1>Sign In</h1>
       <input
         type="email"
         id="Email"
