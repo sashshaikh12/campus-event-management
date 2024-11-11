@@ -1,7 +1,7 @@
 import express, { json } from 'express'
 import mysql from  'mysql2/promise'
 import cors from 'cors'
-import  {sql_password}  from '../backend/password.js';
+import { sql_password, database_name } from './password.js';
 
 
 
@@ -9,7 +9,7 @@ const pool = mysql.createPool({
   host: 'localhost',
   user: 'root',
   password: sql_password,
-  database: 'CEMS'
+  database: database_name,
 });
 
 const app = express()
