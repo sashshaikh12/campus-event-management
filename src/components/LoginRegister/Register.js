@@ -17,7 +17,7 @@ export default function Register() {
   useEffect(() => {
     const auth = localStorage.getItem("user");
     if (auth) {
-      navigate("/home");
+      navigate("/studentDash");
     }
   }, [navigate]);
 
