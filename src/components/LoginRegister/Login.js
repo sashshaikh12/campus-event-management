@@ -10,7 +10,7 @@ const Login = () => {
   useEffect(() => {
     const auth = localStorage.getItem("user");
     if (auth) {
-      navigate("/home");
+      navigate("/studentDash");
     }
   }, [navigate]);
 
@@ -30,7 +30,8 @@ const Login = () => {
       result = await result.json();
       console.warn(result);
       localStorage.setItem("user", JSON.stringify(result));
-      navigate("/home");
+      console.log(localStorage.getItem("user"));
+      navigate("/studentDash");
     } else {
       alert("Invalid Credentials");
     }
