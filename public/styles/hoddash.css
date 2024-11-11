@@ -49,25 +49,3 @@
     position: relative;
     z-index: 1;
 }
-
-.dashform {
-    width: 90%; /* Make the form cover the full width */
-    height: 75vh; /* Make the form cover the full height of the viewport */
-    margin-top: 3%; /* Remove any margin */
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 10%;
-    opacity: 1; /* Set the form opacity */
-    padding: 10px; /* Add padding for inner spacing */
-    border-radius: 15px; /* Add border-radius */
-    background-color: rgba(0, 0, 0, 0.1); /* Add a background color */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6); /* Add a subtle shadow */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Center the content vertically */
-    align-items: center; /* Center the content horizontally */
-}
-
-.dashform * {
-    opacity: 1; /* Override opacity for all child elements */
-}
