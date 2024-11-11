@@ -1,17 +1,18 @@
 import express, { json } from 'express'
 import mysql from  'mysql2/promise'
 import cors from 'cors'
+import  {sql_password}  from '../backend/password.js';
 
 
 
 const pool = mysql.createPool({
   host: 'localhost',
   user: 'root',
-  password: '123',
-  database: 'dbms'
+  password: sql_password,
+  database: 'CEMS'
 });
 
-const app = express();
+const app = express()
 
 app.use(express.json());
 app.use(cors());
@@ -101,7 +102,6 @@ app.post("/login", async (req, res) => {
 
 app.post("/register", async(req, res) => {
     const { name, email, password, department,phone , address , year } = req.body;
-    console.log(req.body);
     try{
         const connection = await pool.getConnection();
         await connection.execute(
@@ -123,5 +123,5 @@ app.post("/register", async(req, res) => {
 })
 
 app.listen(5000,()=>{
-    console.log("backend server running on port 5000");
+    console.log("Everybody")
 })
