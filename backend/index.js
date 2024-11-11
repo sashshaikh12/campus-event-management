@@ -1,13 +1,14 @@
 import express, { json } from 'express'
 import mysql from  'mysql2/promise'
 import cors from 'cors'
+import  {sql_password}  from '../backend/password.js';
 
 
 
 const pool = mysql.createPool({
   host: 'localhost',
   user: 'root',
-  password: 'Passme123',
+  password: sql_password,
   database: 'CEMS'
 });
 
