@@ -6,7 +6,10 @@ export default function HODDash(){
     return(
         <div>
             <HODNav/>
-            <Slider/>
+            <form className="dashform">
+                <Slider/>
+            </form>
+            
         </div>
     );
 }
