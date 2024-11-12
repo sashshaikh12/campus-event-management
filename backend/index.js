@@ -166,6 +166,30 @@ app.get("/studentinfo",async(req,res)=>{
   }
 });
 
+app.post("/blacklist", async (req, res) => {
+  const { id, blacklist} = req.body;
+  try {
+    const connection = await pool.getConnection();
+    if(blacklist=='YES'){
+      await connection.execute(
+        "UPDATE Student SET Blacklist_status = 'NO' WHERE Student_ID = ?",
+        [id]
+      );
+    }else{
+      await connection.execute(
+        "UPDATE Student SET Blacklist_status = 'YES' WHERE Student_ID = ?",
+        [id]
+      );
+    }
+    
+    connection.release();
+    res.send({ success: true, message: "Student blacklisted successfully" });
+     
+  } catch (e) {
+    console.error(e);
+    res.status(500).send("Couldn't update sqldb");
+  }
+});
 
 app.listen(5000,()=>{
     console.log("Everybody")

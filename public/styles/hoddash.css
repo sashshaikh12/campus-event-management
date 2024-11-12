@@ -58,8 +58,9 @@
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     overflow: hidden;
-    background-color: #f0f0f0; /* Match the background color of the page */
+    background-color: rgba(255, 255, 255, 0.3); /* Match the background color of the page */
     animation: fadeIn 1s ease-in-out;
+    font-weight: 600;
 }
 
 .studentTable th, .studentTable td {
@@ -76,14 +77,14 @@
     font-weight: bold;
 }
 
-.studentTable tr:nth-child(even) {
-    background-color: #e0e0e0; /* Slightly different color for even rows */
-}
+
 
 .studentTable td {
     text-align: center;
 }
-
+.studentTable td:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
 .studentinfo {
     text-align: center;
     margin-top: 20px;
