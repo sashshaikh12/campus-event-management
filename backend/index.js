@@ -119,7 +119,40 @@ app.post("/register", async(req, res) => {
         console.error(error);
         res.status(500).send("Error registering user");
     }
-})
+});
+
+app.post("/eventReq", async (req, res) => {
+  const { studentid } = req.body;
+  try {
+    const connection = await pool.getConnection();
+    const [rows] = await connection.execute(
+      `SELECT * FROM club_heads WHERE club_head_id = ?`,
+      [studentid]
+    );
+    connection.release();
+    if (rows.length > 0) {
+      return res.json({ exists: true });
+    } else {
+      return res.json({ exists: false });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Server error");
+  }
+});
+
+app.get("/eventReq", async (req, res) => {
+  try {
+    const connection = await pool.getConnection();
+    const [rows] = await connection.execute("SELECT * FROM Room WHERE Availability_status = 'Available'");
+    connection.release();
+    res.send(rows);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Server error");
+  }
+
+});
 
 app.listen(5000,()=>{
     console.log("Everybody")
