@@ -33,8 +33,6 @@ function Slider()
         }, 1900);
     }, [animationClass]);
 
-    console.log(animationClass);
-
     return(
 
         <div className="SliderBox">
