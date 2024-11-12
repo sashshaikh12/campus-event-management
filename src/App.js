@@ -6,11 +6,8 @@ import FacultyRegister from "./components/LoginRegister/FacultyRegister";
 import HODRegister from "./components/LoginRegister/HODRegister";
 import RoomRegister from "./components/LoginRegister/RoomRegister";
 import StudentDash from "./components/Dashboard/studentDash";
-<<<<<<< HEAD
-import EventReq from "./components/Dashboard/EventReq";
-=======
+import HODNav from "./components/Dashboard/HODNav";
 import HODDash from "./components/Dashboard/HODDash";
->>>>>>> 60292c9f40ffe47bdb0c26f02d7da1575e3c2d9c
 
 export default function App() {
   return (
@@ -21,13 +18,8 @@ export default function App() {
         <Route path="faculty-register" element={<FacultyRegister />} />
         <Route path="hod-register"  element={<HODRegister/>}/>
         <Route path="room-register" element={<RoomRegister/>}/>
-<<<<<<< HEAD
-        <Route path = "/studentDash" element = {<StudentDash />} />
-        <Route path = "/eventReq" element = {<EventReq />} />
-=======
         <Route path = "/studentdash" element = {<StudentDash />} />
         <Route path="/hoddash" element={<HODDash />} />
->>>>>>> 60292c9f40ffe47bdb0c26f02d7da1575e3c2d9c
       </Routes>
     </BrowserRouter>
   );
