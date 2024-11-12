@@ -61,7 +61,7 @@ export default function FacultyRegister() {
     });
     result = await result.json();
     console.warn(result);
-    localStorage.setItem("user", result);
+    localStorage.setItem("user", JSON.stringify(result));
     if (result) {
       navigate("/home");
     }
