@@ -8,6 +8,7 @@ import RoomRegister from "./components/LoginRegister/RoomRegister";
 import StudentDash from "./components/Dashboard/Student/studentDash";
 import HODDash from "./components/Dashboard/HOD/HODDash";
 import StudentInfo from "./components/Dashboard/HOD/studentsInfo";
+import EventReq from "./components/Dashboard/Student/EventReq";
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
         <Route path = "/studentdash" element = {<StudentDash />} />
         <Route path="/hoddash" element={<HODDash />} />
         <Route path="/studentinfo" element={<StudentInfo/>}/>
+        <Route path = "/eventReq" element = {<EventReq />} />
       </Routes>
     </BrowserRouter>
   );
