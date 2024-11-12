@@ -5,6 +5,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css'; // Import Font Awesome
 export default function HODNav() {
     const [showProfileOptions, setShowProfileOptions] = useState(false);
     const [showNotifications, setShowNotifications] = useState(false);
+    const [notifications, setNotifications]= useState([]);
     const notificationRef = useRef(null);
     const profileRef = useRef(null);
 
@@ -32,6 +33,29 @@ export default function HODNav() {
         };
     }, []);
 
+
+    useEffect(()=>{
+        const fetchNotifications = async () =>{
+            try{
+                let result = await fetch("http://localhost:5000/notification",{
+                    method:"GET",
+                    headers:{
+                        "Content-Type":"application/json",
+                    }
+                });
+                result = await result.json();
+                console.warn(result);
+                setNotifications(result);
+            }catch(e){
+                console.error(e.message);
+            }
+        }
+        fetchNotifications();
+    },[showNotifications]);
+
+
+    
+
     return (
         <div className="studentNav">
             <img className="peslogo" src="/newpeslogo.png" alt="pes university logo" />
@@ -46,9 +70,19 @@ export default function HODNav() {
                 </button>
                 {showNotifications && (
                     <div className="notifications">
-                        <form>
-                            
-                        </form>
+                        {notifications.map(notification =>(
+                            <form className="NotificationForm"  key={notification.Appeal_ID}>
+                                <div className="text-content">
+                                    <p><strong>Name:</strong> <b>{notification.Name}</b></p>
+                                    <p><strong>Appeal:</strong> {notification.Appeal}</p>
+                                </div>
+                                <div className="buttons">
+                                    <button className="accept"><i class="fa-solid fa-check"></i></button>
+                                    <button className="reject"><i class="fa-solid fa-xmark"></i></button>
+                                </div>
+
+                            </form>
+                        ))}
                     </div>
                 )}
             </div>

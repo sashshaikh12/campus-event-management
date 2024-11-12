@@ -53,40 +53,6 @@
 
 
 
-.notificationContainer {
-    position: relative;
-    display: inline-block;
-    right: 5%;
-}
-
-.NotificationButton {
-    margin-left: 10px;
-    padding: 10px;
-    background-color: transparent;
-    color: #4CAF50;
-    border: none;
-    cursor: pointer;
-    border-radius: 50%;
-    font-size: 24px;
-}
-
-.NotificationButton:hover .fa-bell {
-    animation: fa-shake 4s infinite;
-}
-
-.notifications {
-    position: absolute;
-    top: 120%; 
-    left: 50%; 
-    transform: translateX(-50%); 
-    background-color: rgba(245, 222, 179,0.6);
-    border: 1px solid black;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 100px;
-    border-radius: 5%;
-    z-index: 1;
-    width: 200px; /* Adjust width as needed */
-}
 
 .studentTable {
     width: 80%;

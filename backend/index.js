@@ -166,6 +166,18 @@ app.get("/studentinfo",async(req,res)=>{
   }
 });
 
+app.get("/notification", async(req,res)=>{
+  try{
+    const connection = await pool.getConnection();
+    const [rows] = await connection.execute("SELECT Appeals.Appeal_ID, Appeals.Student_ID, Appeals.Appeal, Student.Name FROM Appeals JOIN Student ON Appeals.Student_ID = Student.Student_ID;");
+    connection.release();
+    res.send(rows);
+  }catch(e){
+    console.error(e);
+    res.status(500).send("Could not retrieve notifications")
+  }
+});
+
 app.post("/blacklist", async (req, res) => {
   const { id, blacklist} = req.body;
   try {
