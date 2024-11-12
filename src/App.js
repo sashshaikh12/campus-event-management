@@ -5,9 +5,9 @@ import Register from "./components/LoginRegister/Register";
 import FacultyRegister from "./components/LoginRegister/FacultyRegister";
 import HODRegister from "./components/LoginRegister/HODRegister";
 import RoomRegister from "./components/LoginRegister/RoomRegister";
-import StudentDash from "./components/Dashboard/studentDash";
-import HODDash from "./components/Dashboard/HODDash";
-import StudentInfo from "./components/Dashboard/studentsInfo";
+import StudentDash from "./components/Dashboard/Student/studentDash";
+import HODDash from "./components/Dashboard/HOD/HODDash";
+import StudentInfo from "./components/Dashboard/HOD/studentsInfo";
 
 export default function App() {
   return (
