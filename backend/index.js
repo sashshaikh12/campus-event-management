@@ -156,7 +156,7 @@ app.get("/eventReq", async (req, res) => {
 app.get("/studentDash", async (req, res) => {
   try {
     const connection = await pool.getConnection();
-    const [rows] = await connection.execute('SELECT Event_ID, url FROM event');
+    const [rows] = await connection.execute('SELECT Event_ID, url FROM  Event');
     connection.release();
     res.send(rows);
   } catch (error) {
