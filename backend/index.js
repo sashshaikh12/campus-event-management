@@ -126,7 +126,7 @@ app.post("/eventReq", async (req, res) => {
   try {
     const connection = await pool.getConnection();
     const [rows] = await connection.execute(
-      `SELECT * FROM club_heads WHERE club_head_id = ?`,
+      `SELECT * FROM Club_Heads WHERE Club_Head_ID = ?`,
       [studentid]
     );
     connection.release();
@@ -153,6 +153,19 @@ app.get("/eventReq", async (req, res) => {
   }
 
 });
+
+app.get("/studentinfo",async(req,res)=>{
+  try{
+    const connection = await pool.getConnection();
+    const [rows] = await connection.execute("SELECT Student_ID,Name,Department,Email,Blacklist_status,Absent_count,Year,Phone_number,Address from Student");
+    connection.release();
+    res.send(rows);
+  }catch(e){
+    console.error(e);
+    res.status(500).send("Could not retrieve student from sqldb");
+  }
+});
+
 
 app.listen(5000,()=>{
     console.log("Everybody")
