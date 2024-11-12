@@ -16,7 +16,7 @@ export default function HODRegister() {
   useEffect(() => {
     const auth = localStorage.getItem("user");
     if (auth) {
-      navigate("/home");
+      navigate("/hoddash");
     }
   }, [navigate]);
 
@@ -60,7 +60,7 @@ export default function HODRegister() {
     console.warn(result);
     localStorage.setItem("user", JSON.stringify(result));
     if (result) {
-      navigate("/home");
+      navigate("/hoddash");
     }
   };
 
