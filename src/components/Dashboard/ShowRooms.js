@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 function ShowRooms() {
+    console.log("clicked");
     const [rooms, setRooms] = useState([]);
 
     useEffect(() => {

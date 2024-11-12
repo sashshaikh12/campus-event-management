@@ -151,7 +151,18 @@ app.get("/eventReq", async (req, res) => {
     console.error(error);
     res.status(500).send("Server error");
   }
+});
 
+app.get("/studentDash", async (req, res) => {
+  try {
+    const connection = await pool.getConnection();
+    const [rows] = await connection.execute('SELECT Event_ID, url FROM event');
+    connection.release();
+    res.send(rows);
+  } catch (error) {
+    console.error("Server error:", error);
+    res.status(500).send("Server error");
+  }
 });
 
 app.listen(5000,()=>{
