@@ -52,11 +52,11 @@
 
 
 
+
 .notificationContainer {
     position: relative;
     display: inline-block;
-    left: 15%;
-    bottom: 5%;
+    right: 5%;
 }
 
 .NotificationButton {
@@ -71,19 +71,19 @@
 }
 
 .NotificationButton:hover .fa-bell {
-    animation: fa-bounce 0.5s infinite;
+    animation: fa-shake 4s infinite;
 }
 
 .notifications {
     position: absolute;
-    border-radius: 6%;
-    top: 120%;
-    left: 50%; /* Center align */
+    top: 120%; 
+    left: 50%; 
     transform: translateX(-50%); 
-    background-color: wheat;
-    border: 3px solid #ccc;
+    background-color: rgba(245, 222, 179,0.6);
+    border: 1px solid black;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 50px;
+    padding: 100px;
+    border-radius: 5%;
     z-index: 1;
     width: 200px; /* Adjust width as needed */
 }
