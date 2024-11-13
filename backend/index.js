@@ -156,7 +156,7 @@ app.get("/eventReq", async (req, res) => {
 app.get("/studentDash", async (req, res) => {
   try {
     const connection = await pool.getConnection();
-    const [rows] = await connection.execute('SELECT Event_ID, url FROM  Event');
+    const [rows] = await connection.execute('SELECT Event_ID, URL FROM  Event');
     connection.release();
     res.send(rows);
   } catch (error) {
@@ -190,20 +190,40 @@ app.get("/notification", async(req,res)=>{
 });
 
 app.post("/blacklist", async (req, res) => {
-  const { id, blacklist} = req.body;
+  const { id, blacklist,decision} = req.body;
   try {
     const connection = await pool.getConnection();
-    if(blacklist=='YES'){
-      await connection.execute(
-        "UPDATE Student SET Blacklist_status = 'NO' WHERE Student_ID = ?",
-        [id]
-      );
+    if(decision){
+      if(decision=='accept'){
+        await connection.execute(
+          "UPDATE Student SET Blacklist_status = 'NO' WHERE Student_ID = ?",
+          [id]
+        )
+        await connection.execute(
+          "DELETE FROM Appeals WHERE Student_ID = ?",
+          [id]
+        )
+      }else{
+        await connection.execute(
+          "DELETE FROM Appeals WHERE Student_ID = ?",
+          [id]
+        )
+      }
     }else{
-      await connection.execute(
-        "UPDATE Student SET Blacklist_status = 'YES' WHERE Student_ID = ?",
-        [id]
-      );
+      if(blacklist=='YES'){
+        await connection.execute(
+          "UPDATE Student SET Blacklist_status = 'NO' WHERE Student_ID = ?",
+          [id]
+        );
+      }else{
+        await connection.execute(
+          "UPDATE Student SET Blacklist_status = 'YES' WHERE Student_ID = ?",
+          [id]
+        );
+      }
     }
+
+    
     
     connection.release();
     res.send({ success: true, message: "Student blacklisted successfully" });
