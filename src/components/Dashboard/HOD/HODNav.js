@@ -51,7 +51,7 @@ export default function HODNav() {
             }
         }
         fetchNotifications();
-    },[]);
+    },[showNotifications]);
 
     async function blacklist(id,blacklist,decision){
         console.log({id,blacklist,decision});
