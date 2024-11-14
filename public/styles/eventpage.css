@@ -1,0 +1,152 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap');
+
+.unapprovedEvents, .approvedEvents {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 28px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    padding: 20px;
+    width: 90%;
+}
+
+.eventsform {
+    border-bottom: 1px solid #ddd;
+    padding: 20px;
+    background-color: whitesmoke;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 10px;
+    align-items: start;
+    position: relative;
+}
+
+.eventsform:hover {
+    background-color: lightcyan;
+}
+
+.eventformdetails {
+    grid-column: 2 / 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: start;
+}
+
+.eventsform p {
+    margin: 10px 0;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.eventsform p span {
+    font-weight: bold;
+    color: #ff6347; /* Tomato red */
+}
+
+.eventsform .description {
+    grid-column: 1 / 3;
+    max-height: 100px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.eventsform .event-name {
+    font-family: "Host Grotesk", sans-serif;
+    grid-column: 1 / 3;
+    font-size: 25px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.eventsform .event-date {
+    grid-column: 1 / 2;
+    font-weight: bold;
+}
+
+.eventsform .event-location {
+    grid-column: 2 / 3;
+    font-weight: bold;
+}
+
+.eventsform .event-time {
+    grid-column: 1 / 2;
+    font-style: italic;
+}
+
+.eventsform .event-room {
+    grid-column: 2 / 3;
+    font-style: italic;
+}
+
+.acceptreject {
+    grid-column: 3 / 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.approve-button {
+    background-color: green; /* Tomato red */
+    border: none;
+    border-radius: 5%; /* Square button */
+    color: #fff;
+    cursor: pointer;
+    padding: 40px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    width: 100%;
+    height: 50%;
+}
+
+.reject-button {
+    background-color: #ff6347; /* Tomato red */
+    border: none;
+    border-radius: 5%; /* Square button */
+    color: #fff;
+    cursor: pointer;
+    padding: 40px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 800;
+    width: 100%;
+    height: 50%;
+}
+
+.approve-button:hover {
+    background-color: greenyellow;
+}
+
+.reject-button:hover {
+    background-color: red; /* Darker shade of red */
+}
+
+.approve-button:hover, .reject-button:hover {
+    opacity: 0.8;
+}
+
+.form-title {
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif; /* Apply the new font */
+}
+
+.event-img{
+    height: 25vh;
+}

@@ -29,7 +29,7 @@ export default function FacultyInfo(){
     return(
         <div>
             <HODNav/>
-            <h1 className="studentinfo">Student Information</h1>
+            <h1 className="studentinfo">Faculty Information</h1>
             <table className="studentTable">
                 <thead>
                     <tr>

@@ -153,7 +153,7 @@ app.post("/eventReq", async (req, res) => {
 app.get("/eventReq", async (req, res) => {
   try {
     const connection = await pool.getConnection();
-    const [rows] = await connection.execute("SELECT * FROM room WHERE Availability_status = 'Available'");
+    const [rows] = await connection.execute("SELECT * FROM Room WHERE Availability_status = 'Available'");
     connection.release();
     res.send(rows);
   } catch (error) {
@@ -264,7 +264,7 @@ app.post("/eventReq/reqSubmit", async (req, res) => {
     const connection = await pool.getConnection();
 
     const [clubRows] = await connection.execute(
-      'SELECT Club_ID FROM club WHERE Club_head = ? AND Club_name = ?',
+      'SELECT Club_ID FROM Club WHERE Club_head = ? AND Club_name = ?',
       [name, clubName]
     );
 
@@ -276,7 +276,7 @@ app.post("/eventReq/reqSubmit", async (req, res) => {
     const club_id = clubRows[0].Club_ID;
 
     const [newclubrows] = await connection.execute(
-      'SELECT Club_Head_ID FROM club WHERE Club_head = ? AND Club_ID = ?',
+      'SELECT Club_Head_ID FROM Club WHERE Club_head = ? AND Club_ID = ?',
       [name , club_id]
     );
 
@@ -288,7 +288,7 @@ app.post("/eventReq/reqSubmit", async (req, res) => {
     const club_head_id = newclubrows[0].Club_Head_ID;
 
     const [roomRows] = await connection.execute(
-      'SELECT Room_ID FROM room WHERE Room_name = ?',
+      'SELECT Room_ID FROM Room WHERE Room_name = ?',
       [eventVenue]
     );
     
@@ -328,8 +328,8 @@ app.post("/yourEvents", async (req, res) => {
     const connection = await pool.getConnection();
     const [rows] = await connection.execute(
       `SELECT e.*, r.Room_name, r.Location
-       FROM event e
-       JOIN room r ON e.Room_ID = r.room_id
+       FROM Event e
+       JOIN Room r ON e.Room_ID = r.room_id
        WHERE e.Club_Head_ID = ?`,
       [studentid]
     );
@@ -348,7 +348,7 @@ app.post("/eventReq/addURL", async (req, res) => {
   try {
     const connection = await pool.getConnection();
     await connection.execute(
-      'UPDATE event SET url = ? WHERE Event_ID = ?',
+      'UPDATE Event SET url = ? WHERE Event_ID = ?',
       [url, event_Id]
     );
     connection.release();
@@ -358,7 +358,19 @@ app.post("/eventReq/addURL", async (req, res) => {
     res.status(500).send("Server error");
   }
 
-}); 
+});
+
+app.get("/eventinfo",async(req,res) =>{
+  try{
+    const connection = await pool.getConnection();
+    const [rows] = await connection.execute("SELECT *FROM Room JOIN Event ON Room.Room_ID = Event.Room_ID");
+    connection.release();
+    res.send(rows);
+  }catch(e){
+    console.error(e);
+    res.status(500).send("Could Not retrieve events from db")
+  }
+})
 
 app.listen(5000,()=>{
     console.log("Everybody")

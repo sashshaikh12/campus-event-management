@@ -137,8 +137,8 @@ body {
     margin-bottom: 2%;
     margin-top: 2%;
     margin-left: 2%;
-    gap: 10px;
-    width: 40%;
+    gap: 5vh;
+    width: 80vh;
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
     overflow: hidden;
 }
