@@ -10,6 +10,8 @@ import HODDash from "./components/Dashboard/HOD/HODDash";
 import StudentInfo from "./components/Dashboard/HOD/studentsInfo";
 import EventReq from "./components/Dashboard/Student/EventReq";
 import YourEvents from "./components/Dashboard/Student/YourEvents";
+import FacultyInfo from "./components/Dashboard/HOD/facultyinfo";
+import EventInfo from "./components/Dashboard/HOD/eventinfo";
 
 export default function App() {
   return (
@@ -25,6 +27,8 @@ export default function App() {
         <Route path="/studentinfo" element={<StudentInfo/>}/>
         <Route path = "/eventReq" element = {<EventReq />} />
         <Route path = "/yourEvents" element = {<YourEvents />} />
+        <Route path="/facultyinfo" element={<FacultyInfo/>}/>
+        <Route path="events" element={<EventInfo/>}/>
       </Routes>
     </BrowserRouter>
   );
