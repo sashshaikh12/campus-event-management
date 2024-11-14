@@ -108,13 +108,22 @@ app.post("/register", async(req, res) => {
             'INSERT INTO Student (Name, Email , Department ,Year, Phone_number,Address,Password) VALUES (?, ?,?,?,?,?,?)',
             [name,email,department,year,phone,address,password]
         );
+
+
+         // Retrieve the details of the newly inserted student
+         const [rows] = await connection.execute(
+             'SELECT * FROM Student WHERE Email = ?',
+             [email]
+         );
+ 
+
         connection.release();
-        res.send({
-            name,
-            email,
-            department,
-            phone,
-        });
+        if (rows.length > 0) {
+          res.send(rows[0]);
+      } else {
+          res.status(404).send("Student not found");
+      }
+
     }catch(error){
         console.error(error);
         res.status(500).send("Error registering user");
@@ -126,7 +135,7 @@ app.post("/eventReq", async (req, res) => {
   try {
     const connection = await pool.getConnection();
     const [rows] = await connection.execute(
-      `SELECT * FROM Club_Heads WHERE Club_Head_ID = ?`,
+      `SELECT * FROM Club WHERE Club_Head_ID = ?`,
       [studentid]
     );
     connection.release();
@@ -144,7 +153,7 @@ app.post("/eventReq", async (req, res) => {
 app.get("/eventReq", async (req, res) => {
   try {
     const connection = await pool.getConnection();
-    const [rows] = await connection.execute("SELECT * FROM Room WHERE Availability_status = 'Available'");
+    const [rows] = await connection.execute("SELECT * FROM room WHERE Availability_status = 'Available'");
     connection.release();
     res.send(rows);
   } catch (error) {
@@ -156,7 +165,7 @@ app.get("/eventReq", async (req, res) => {
 app.get("/studentDash", async (req, res) => {
   try {
     const connection = await pool.getConnection();
-    const [rows] = await connection.execute('SELECT Event_ID, url FROM event');
+    const [rows] = await connection.execute('SELECT * FROM Event WHERE TRIM(url) IS NOT NULL AND TRIM(url) != ""');
     connection.release();
     res.send(rows);
   } catch (error) {
@@ -213,6 +222,108 @@ app.post("/blacklist", async (req, res) => {
     res.status(500).send("Couldn't update sqldb");
   }
 });
+
+app.post("/eventReq/reqSubmit", async (req, res) => {
+  const { name, clubName, eventName, eventDate, eventStartTime, eventEndTime, eventVenue, eventDesc, eventBudget } = req.body;
+  try {
+    const connection = await pool.getConnection();
+
+    const [clubRows] = await connection.execute(
+      'SELECT Club_ID FROM club WHERE Club_head = ? AND Club_name = ?',
+      [name, clubName]
+    );
+
+    if (clubRows.length === 0) {
+      connection.release();
+      return res.status(404).send("Club head not found");
+    }
+
+    const club_id = clubRows[0].Club_ID;
+
+    const [newclubrows] = await connection.execute(
+      'SELECT Club_Head_ID FROM club WHERE Club_head = ? AND Club_ID = ?',
+      [name , club_id]
+    );
+
+    if (newclubrows.length === 0) {
+      connection.release();
+      return res.status(404).send("Club head id not found");
+    }
+
+    const club_head_id = newclubrows[0].Club_Head_ID;
+
+    const [roomRows] = await connection.execute(
+      'SELECT Room_ID FROM room WHERE Room_name = ?',
+      [eventVenue]
+    );
+    
+
+    if (roomRows.length === 0) {
+      connection.release();
+      return res.status(404).send("Room not found");
+    }
+
+
+    const room_id = roomRows[0].Room_ID;
+
+    await connection.execute(
+
+      'INSERT INTO Event (Event_name, Event_date, Event_time, Event_description,Club_Head_id, Event_End_Time,Room_ID, Approved, Budget) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      [eventName,eventDate,eventStartTime,eventDesc,club_head_id, eventEndTime, room_id, "YES", eventBudget]
+    );  
+    connection.release();
+    res.send({
+      eventName,
+      eventDate,
+      eventStartTime,
+      eventEndTime,
+      eventVenue,
+      eventDesc,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Error registering event");
+  }
+});
+
+app.post("/yourEvents", async (req, res) => {
+
+  const { studentid } = req.body;
+  try {
+    const connection = await pool.getConnection();
+    const [rows] = await connection.execute(
+      `SELECT e.*, r.Room_name, r.Location
+       FROM event e
+       JOIN room r ON e.Room_ID = r.room_id
+       WHERE e.Club_Head_ID = ?`,
+      [studentid]
+    );
+    connection.release();
+    res.send(rows);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Server error");
+  }
+
+});
+
+app.post("/eventReq/addURL", async (req, res) => {
+
+  const { event_Id, url } = req.body;
+  try {
+    const connection = await pool.getConnection();
+    await connection.execute(
+      'UPDATE event SET url = ? WHERE Event_ID = ?',
+      [url, event_Id]
+    );
+    connection.release();
+    res.send({ success: true, message: "URL added successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Server error");
+  }
+
+}); 
 
 app.listen(5000,()=>{
     console.log("Everybody")

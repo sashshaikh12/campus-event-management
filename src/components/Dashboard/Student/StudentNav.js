@@ -9,9 +9,10 @@ function StudentNav()
 
     const GetEvents = async () => {
         const auth = localStorage.getItem("user");
-        console.log(auth);
         const userDetails = JSON.parse(auth);
+        console.log(userDetails);
         const reqbody = { studentid: userDetails.Student_ID };
+        console.log(reqbody);
         let result = await fetch("http://localhost:5000/eventReq", {
             method: "POST",
             body: JSON.stringify(reqbody),
@@ -20,6 +21,7 @@ function StudentNav()
             },
           });
         result = await result.json();
+        console.log(result);
         var cango = result.exists;
         console.log(result);
         if (cango) {

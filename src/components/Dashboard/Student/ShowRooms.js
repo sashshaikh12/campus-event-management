@@ -14,6 +14,7 @@ function ShowRooms() {
                     },
                 });
                 result = await result.json();
+                console.log(result);
                 setRooms(result);
             } catch (err) {
                 console.error(err.message);
@@ -30,7 +31,7 @@ function ShowRooms() {
                 <div key={index} className="roomDisplay" style={{ animationDelay: `${index * 0.5}s` }}>
                     <h1>{room.Room_name}</h1>
                     <h2>Capacity: {room.Capacity}</h2>
-                    <h3>Location: {room.location}</h3>
+                    <h3>Location: {room.Location}</h3>
                 </div>
             ))}
         </div>

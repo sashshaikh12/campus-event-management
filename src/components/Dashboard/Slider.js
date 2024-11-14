@@ -15,6 +15,7 @@ function Slider() {
                     },
                 });
                 result = await result.json();
+                console.log(result);
 
                 setImages(result);
             } catch (err) {
@@ -25,7 +26,6 @@ function Slider() {
         fetchImages();
     }, []);
 
-    console.log(images);
     useEffect(() => {
         if (images.length > 0) {
             setTimeout(() => {
@@ -45,7 +45,7 @@ function Slider() {
                 <img
                     className={`SliderImgs ${animationClass}`}
                     key={images[currentImageIndex].Event_ID}
-                    src={images[currentImageIndex].url}
+                    src={images[currentImageIndex].URL}
                     alt="slider images"
                 />
             )}
