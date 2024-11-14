@@ -9,6 +9,8 @@ import StudentDash from "./components/Dashboard/Student/studentDash";
 import HODDash from "./components/Dashboard/HOD/HODDash";
 import StudentInfo from "./components/Dashboard/HOD/studentsInfo";
 import EventReq from "./components/Dashboard/Student/EventReq";
+import FacultyInfo from "./components/Dashboard/HOD/facultyinfo";
+import EventInfo from "./components/Dashboard/HOD/eventinfo";
 
 export default function App() {
   return (
@@ -23,6 +25,8 @@ export default function App() {
         <Route path="/hoddash" element={<HODDash />} />
         <Route path="/studentinfo" element={<StudentInfo/>}/>
         <Route path = "/eventReq" element = {<EventReq />} />
+        <Route path="/facultyinfo" element={<FacultyInfo/>}/>
+        <Route path="events" element={<EventInfo/>}/>
       </Routes>
     </BrowserRouter>
   );

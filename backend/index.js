@@ -177,6 +177,21 @@ app.get("/studentinfo",async(req,res)=>{
   }
 });
 
+
+app.get("/facultyinfo",async(req,res)=>{
+  try{
+    const connection = await pool.getConnection();
+    const [rows] = await connection.execute("SELECT Faculty_ID,Name,Department,Email,Phone_number from Faculty");
+    connection.release();
+    res.send(rows);
+  }catch(e){
+    console.error(e);
+    res.status(500).send("Could not retrieve student from sqldb");
+  }
+});
+
+
+
 app.get("/notification", async(req,res)=>{
   try{
     const connection = await pool.getConnection();

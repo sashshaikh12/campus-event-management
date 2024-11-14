@@ -77,8 +77,8 @@ export default function HODNav() {
             <img className="peslogo" src="/newpeslogo.png" alt="pes university logo" />
             <div className="centerButtons">
                 <Link to="/studentinfo"><button>Students</button></Link>
-                <button>Faculty</button>
-                <button>Events</button>
+                <Link to="/facultyinfo"><button>Faculty</button></Link>
+                <Link to="/events"><button>Events</button></Link>
             </div>
             <div className="notificationContainer" ref={notificationRef}>
                 <button className="NotificationButton" onClick={toggleNotifications}>
@@ -97,7 +97,7 @@ export default function HODNav() {
                                 </div>
                                 <div className="buttons">
                                     <button className="accept" onClick={() => blacklist(notification.Student_ID, 'YES', "accept")}><i className="fa-solid fa-check"></i></button>
-                                    <button className="reject"><i className="fa-solid fa-xmark"></i></button>
+                                    <button className="reject" onClick={()=>blacklist(notification.Student_ID,'YES',"reject")}><i className="fa-solid fa-xmark"></i></button>
                                 </div>
                             </form>
                         ))
