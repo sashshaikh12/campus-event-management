@@ -12,6 +12,7 @@ import EventReq from "./components/Dashboard/Student/EventReq";
 import YourEvents from "./components/Dashboard/Student/YourEvents";
 import FacultyInfo from "./components/Dashboard/HOD/facultyinfo";
 import EventInfo from "./components/Dashboard/HOD/eventinfo";
+import RoomDash from "./components/Dashboard/Room_Manager/RoomDash";
 
 export default function App() {
   return (
@@ -28,7 +29,8 @@ export default function App() {
         <Route path = "/eventReq" element = {<EventReq />} />
         <Route path = "/yourEvents" element = {<YourEvents />} />
         <Route path="/facultyinfo" element={<FacultyInfo/>}/>
-        <Route path="events" element={<EventInfo/>}/>
+        <Route path="/events" element={<EventInfo/>}/>
+        <Route path="/roomdash" element={<RoomDash/>}/>
       </Routes>
     </BrowserRouter>
   );
