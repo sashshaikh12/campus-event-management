@@ -1,5 +1,6 @@
 import React from "react";
-import {  useNavigate } from "react-router-dom";
+import {  useNavigate ,Link} from "react-router-dom";
+import StudentEventReg from "./StudentEventReg";
 
 
 
@@ -30,13 +31,14 @@ function StudentNav()
         else alert("You are not a club head");
     };
 
+    
     return(
 
     <div className="studentNav">
         <img className = "peslogo" src="/newpeslogo.png" alt="pes university logo" />
         <div className="centerButtons">
                 <button type="button" onClick={GetEvents}>Event Request</button>
-                <button>Event Register</button>
+                <Link to="/StudentEventReg"><button>Event Register</button></Link>
                 <button>About</button>
                 <button>Contacts</button>
         </div>

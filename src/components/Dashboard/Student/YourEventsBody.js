@@ -1,33 +1,41 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
-function YourEventsBody({events})
-{
 
-    const GiveUrl = async (event_Id) => {
+function YourEventsBody({ events }) {
+    const [urls, setUrls] = useState({});
 
-        console.log(event_Id);
-        const reqbody = {event_Id, url};
+    const handleUrlChange = (eventId, value) => {
+        setUrls(prevUrls => ({
+            ...prevUrls,
+            [eventId]: value
+        }));
+    };
+
+    const GiveUrl = async (eventId) => {
+        const url = urls[eventId];
+        console.log(eventId, url);
+        const reqbody = { event_Id: eventId, url };
+        console.log(reqbody);
         let result = await fetch("http://localhost:5000/eventReq/addURL", {
-            method: "post",
+            method: "POST",
             body: JSON.stringify(reqbody),
             headers: {
               "Content-Type": "application/json",
             },
-          });
+        });
 
         result = await result.json();
         console.log(result);
-        setUrl("");
+        setUrls(prevUrls => ({
+            ...prevUrls,
+            [eventId]: ""
+        }));
     };
 
-    const [url, setUrl] = useState("");
-    console.log(url);  
-
-    console.log(events);
-    return(
+    return (
         <div className="eventsContainer">
             {events.map((event, index) => (
-                <div key={index} className="eventBox" id = {index}>
+                <div key={index} className="eventBox" id={index}>
                     <h1>{event.Event_name}</h1>
                     <hr />
                     <h2>{event.Event_description}</h2>
@@ -43,7 +51,13 @@ function YourEventsBody({events})
                             <h3>Budget: {event.Budget}</h3>
                         </div>
                     </div>
-                    <input type="text" value={url} placeholder="Enter Image URL" className="eventInput" onChange={(e) => setUrl(e.target.value)} />
+                    <input
+                        type="text"
+                        value={urls[event.Event_ID] || ""}
+                        placeholder="Enter Image URL"
+                        className="eventInput"
+                        onChange={(e) => handleUrlChange(event.Event_ID, e.target.value)}
+                    />
                     <button className="eventButton" onClick={() => GiveUrl(event.Event_ID)}>Submit</button>
                 </div>
             ))}

@@ -345,10 +345,11 @@ app.post("/yourEvents", async (req, res) => {
 app.post("/eventReq/addURL", async (req, res) => {
 
   const { event_Id, url } = req.body;
+  console.log(event_Id, url);
   try {
     const connection = await pool.getConnection();
     await connection.execute(
-      'UPDATE Event SET url = ? WHERE Event_ID = ?',
+      'UPDATE event SET URL = ? WHERE Event_ID = ?',
       [url, event_Id]
     );
     connection.release();
@@ -387,6 +388,26 @@ app.post("/approveEvent",async(req,res)=>{
   }
 });
 
+
+app.post("/getLocation", async (req, res) => {
+  const { roomid } = req.body;
+  try {
+      const connection = await pool.getConnection();
+      const [rows] = await connection.execute(
+          'SELECT * FROM room WHERE Room_ID = ?',
+          [roomid]
+      );
+      connection.release();
+      if (rows.length > 0) {
+          res.json(rows[0]);
+      } else {
+          res.status(404).send("Location not found");
+      }
+  } catch (error) {
+      console.error(error);
+      res.status(500).send("Server error");
+  }
+});
 
 app.listen(5000,()=>{
     console.log("Everybody")
