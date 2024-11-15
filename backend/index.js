@@ -374,7 +374,6 @@ app.get("/eventinfo",async(req,res) =>{
 
 app.post("/approveEvent",async(req,res)=>{
   const {id,approval} = req.body;
-  console.log(id);
   try{
     const connection = await pool.getConnection();
     const [rows] = await connection.execute("UPDATE Event SET Approved = ? WHERE Event_ID = ?"
