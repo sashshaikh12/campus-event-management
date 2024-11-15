@@ -304,7 +304,7 @@ app.post("/eventReq/reqSubmit", async (req, res) => {
     await connection.execute(
 
       'INSERT INTO Event (Event_name, Event_date, Event_time, Event_description,Club_Head_id, Event_End_Time,Room_ID, Approved, Budget) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-      [eventName,eventDate,eventStartTime,eventDesc,club_head_id, eventEndTime, room_id, "YES", eventBudget]
+      [eventName,eventDate,eventStartTime,eventDesc,club_head_id, eventEndTime, room_id, "waiting", eventBudget]
     );  
     connection.release();
     res.send({
@@ -371,6 +371,23 @@ app.get("/eventinfo",async(req,res) =>{
     res.status(500).send("Could Not retrieve events from db")
   }
 })
+
+app.post("/approveEvent",async(req,res)=>{
+  const {id,approval} = req.body;
+  console.log(id);
+  try{
+    const connection = await pool.getConnection();
+    const [rows] = await connection.execute("UPDATE Event SET Approved = ? WHERE Event_ID = ?"
+      ,[approval,id]
+    );
+    connection.release();
+    res.send(rows);
+  }catch(e){
+    console.error(e);
+    res.status(500).send("Couldn't approve/reject event")
+  }
+});
+
 
 app.listen(5000,()=>{
     console.log("Everybody")
