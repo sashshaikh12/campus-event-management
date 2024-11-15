@@ -4,6 +4,8 @@ import HODNav from "./HODNav";
 
 export default function EventInfo(){
     const [events,setEvents] = useState([]);
+    const [showApproved, setShowApproved] = useState(true);
+    const [showWaiting, setShowWaiting] = useState(true);
 
 
     useEffect(()=>{
@@ -25,12 +27,20 @@ export default function EventInfo(){
         fetchEvents();
     },[]);
     
+    const toggleApproved = () => {
+        setShowApproved(!showApproved);
+    };
+
+    const toggleWaiting = () => {
+        setShowWaiting(!showWaiting);
+    };
+
     return(
         <div>
             <HODNav/>
             <div className="unapprovedEvents">
                 <h1 className="form-title">WAITING FOR APPROVAL</h1>
-                {events.map(event => (
+                {events.filter(event => event.Approved === 'waiting').map(event => (
                     <div className="eventsform" key={event.Event_ID}>
                         <img src={event.URL} alt="event-img" className="event-img" />
                         <div className="eventformdetails">
@@ -41,16 +51,22 @@ export default function EventInfo(){
                             <p className="event-time"><span>Time:</span> {event.Event_time}</p>
                             <p className="event-room"><span>Room:</span> {event.Room_name}</p>
                         </div>
-                            <div className="acceptreject">
-                        <button className="approve-button"><i className="fa-solid fa-check"/></button>
-                        <button className="reject-button"><i className="fa-solid fa-xmark"/></button>
+                        <div className="acceptreject">
+                            <button className="approve-button"><i className="fa-solid fa-check" /></button>
+                            <button className="reject-button"><i className="fa-solid fa-xmark" /></button>
+                        </div>
                     </div>
-                </div>
                 ))}
             </div>
-            <form className="approvedEvents">
-            <h1 className="form-title">APPROVED</h1>
-                {events.map(event => (
+            <div className="approvedEvents">
+                <div className="approved-header">
+                    <button onClick={toggleApproved} className="toggle-button">
+                        {showApproved ? <i className="fa-solid fa-chevron-down" /> : <i className="fa-solid fa-chevron-right" />}
+                    </button>
+                    <h1 className="form-title">APPROVED EVENTS</h1>
+                </div>
+                <div className={`approved-content ${showApproved ? 'show' : 'hide'}`}>
+                    {events.filter(event => event.Approved === 'YES').map(event => (
                         <div className="eventsform" key={event.Event_ID}>
                             <img src={event.URL} alt="event-img" className="event-img" />
                             <div className="eventformdetails">
@@ -61,12 +77,10 @@ export default function EventInfo(){
                                 <p className="event-time"><span>Time:</span> {event.Event_time}</p>
                                 <p className="event-room"><span>Room:</span> {event.Room_name}</p>
                             </div>
-                                <div className="acceptreject">
-                            <button className="reject-button"><i className="fa-solid fa-xmark"/></button>
                         </div>
-                    </div>
                     ))}
-            </form>
+                </div>
+            </div>
         </div>
     )
 }
