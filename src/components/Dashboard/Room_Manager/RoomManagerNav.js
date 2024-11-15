@@ -76,9 +76,9 @@ export default function RoomManagerNAV() {
         <div className="studentNav">
             <img className="peslogo" src="/newpeslogo.png" alt="pes university logo" />
             <div className="centerButtons">
-                <Link to="/studentinfo"><button>Students</button></Link>
-                <Link to="/facultyinfo"><button>Faculty</button></Link>
-                <Link to="/events"><button>Events</button></Link>
+                <Link to="/"><button>Students</button></Link>
+                <Link to="/"><button>Faculty</button></Link>
+                <Link to="/"><button>Events</button></Link>
             </div>
             <div className="notificationContainer" ref={notificationRef}>
                 <button className="NotificationButton" onClick={toggleNotifications}>

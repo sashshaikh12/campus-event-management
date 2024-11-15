@@ -14,7 +14,7 @@ export default function RoomRegister(){
     useEffect(() => {
         const auth = localStorage.getItem("user");
         if (auth) {
-          navigate("/home");
+          navigate("/roomdash");
         }
       }, [navigate]);
 
@@ -56,7 +56,7 @@ export default function RoomRegister(){
         console.warn(result);
         localStorage.setItem("user", JSON.stringify(result));
         if (result) {
-          navigate("/home");
+          navigate("/roomdash");
         }
       };
       return (

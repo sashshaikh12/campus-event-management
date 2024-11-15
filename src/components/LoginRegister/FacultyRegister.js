@@ -16,7 +16,7 @@ export default function FacultyRegister() {
   useEffect(() => {
     const auth = localStorage.getItem("user");
     if (auth) {
-      navigate("/home");
+      navigate("/facultydash");
     }
   }, [navigate]);
 
@@ -63,7 +63,7 @@ export default function FacultyRegister() {
     console.warn(result);
     localStorage.setItem("user", JSON.stringify(result));
     if (result) {
-      navigate("/home");
+      navigate("/facultydash");
     }
   };
 
