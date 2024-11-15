@@ -1,0 +1,167 @@
+/* Main event title styling with animated gradient background */
+.EventTitle {
+    height: 80px;
+    width: 100%;
+    background: linear-gradient(120deg, #ff6ec4, #7873f5, #ff6ec4); /* Gradient background */
+    background-size: 200% 200%;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Light shadow */
+    border: 2px solid rgba(255, 182, 193, 0.3); /* Semi-transparent border */
+    overflow: hidden;
+    animation: gradientFlow 6s ease-in-out infinite; /* Gradient animation */
+}
+
+.EventTitle h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff; /* White text color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Text shadow for depth */
+}
+
+/* Keyframes for gradient flow animation */
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* StudentEventReqBody.css */
+
+.EventCardsContainer {
+    display: block; /* Display cards in a block layout */
+    padding: 20px;
+}
+
+.EventCard {
+    background-color: #fff; /* White background color */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    overflow: hidden; /* Hide overflow content */
+    width: 100%; /* Take full width of the container */
+    max-width: 600px; /* Maximum width for the card */
+    margin: 20px auto; /* Center the card and add vertical spacing */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+    margin-top: 3%;
+}
+
+.EventCard:hover {
+    transform: translateY(-10px); /* Lift the card on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+.EventCardImage {
+    width: 100%; /* Make the image container take the full width of the card */
+    overflow: hidden; /* Hide overflow content */
+}
+
+.EventCardImage img {
+    width: 100%; /* Make the image take the full width of the container */
+    height: auto; /* Maintain the aspect ratio */
+    object-fit: cover; /* Cover the container while maintaining aspect ratio */
+}
+
+.EventCardButton {
+    background-color: #4CAF50; /* Green background color */
+    color: #fff; /* White text color */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px;
+    width: 100%; /* Make the button take the full width of the card */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for hover effects */
+    margin: 0; /* Remove margin */
+}
+
+.EventCardButton:hover {
+    background-color: #45a049; /* Darker green hover background color */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.EventCardButton:active {
+    background-color: #3e8e41; /* Even darker green active background color */
+    transform: scale(0.98); /* Slightly shrink the button on active */
+}
+
+/* Event details styling */
+.EventDetails {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd; /* Light border */
+}
+
+.EventDetailsImage {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.EventDetailsName {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd; /* Add border below the event name */
+    padding-bottom: 10px; /* Add padding below the event name */
+    text-align: center; /* Center the event name */
+}
+
+.EventDetailsDescription {
+    font-size: 16px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd; /* Add border below the description */
+    padding-bottom: 10px; /* Add padding below the description */
+    max-height: 150px; /* Set a maximum height for the description */
+    overflow-y: auto; /* Make the description scrollable */
+}
+
+.EventDetailsInfo {
+    padding: 10px;
+    border: 1px solid #ddd; /* Add border around the details */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #f9f9f9; /* Light background color */
+}
+
+.EventDetailsInfo p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.EventVenueImage {
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.EventDetailsButtons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.EventDetailsButton {
+    background-color: #750E21; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition for hover effects */
+}
+
+.EventDetailsButton:hover {
+    background-color: #F05941; /* Button hover background color */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+}
+
+.EventDetailsButton:active {
+    background-color: #004080; /* Button active background color */
+    transform: scale(0.98); /* Slightly shrink the button on active */
+}
