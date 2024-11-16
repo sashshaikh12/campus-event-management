@@ -81,7 +81,7 @@ export default function EventInfo(){
                     <h1 className="form-title">APPROVED EVENTS</h1>
                 </div>
                 <div className={`approved-content ${showApproved ? 'show' : 'hide'}`}>
-                    {Array.isArray(events) && events.filter(event => event.Approved === 'YES').map(event => (
+                    {Array.isArray(events) && events.filter(event => event.Approved == 'YES').map(event => (
                         <div className="eventsform" key={event.Event_ID}>
                             <img src={event.URL} alt="event-img" className="event-img" />
                             <div className="eventformdetails">

@@ -14,9 +14,8 @@ function YourEventsBody({ events }) {
     const GiveUrl = async (eventId) => {
         const url = urls[eventId];
         console.log(eventId, url);
-        const reqbody = { event_Id: eventId, url };
-        console.log(reqbody);
-        let result = await fetch("http://localhost:5000/eventReq/addURL", {
+        const reqbody = { eventId, url };
+        let result = await fetch("http://localhost:5000/eventReq/addUrl", {
             method: "POST",
             body: JSON.stringify(reqbody),
             headers: {
@@ -32,10 +31,21 @@ function YourEventsBody({ events }) {
         }));
     };
 
+    const getStatusClass = (status) => {
+        switch (status) {
+            case "YES":
+                return "approved";
+            case "waiting":
+                return "waiting";
+            default:
+                return "rejected";
+        }
+    };
+
     return (
         <div className="eventsContainer">
             {events.map((event, index) => (
-                <div key={index} className="eventBox" id={index}>
+                <div key={index} className={`eventBox ${getStatusClass(event.Approved)}`} id={index}>
                     <h1>{event.Event_name}</h1>
                     <hr />
                     <h2>{event.Event_description}</h2>

@@ -264,7 +264,7 @@ app.post("/eventReq/reqSubmit", async (req, res) => {
     const connection = await pool.getConnection();
 
     const [clubRows] = await connection.execute(
-      'SELECT Club_ID FROM Club WHERE Club_head = ? AND Club_name = ?',
+      'SELECT Club_ID FROM club WHERE Club_head = ? AND Club_name = ?',
       [name, clubName]
     );
 
@@ -276,7 +276,7 @@ app.post("/eventReq/reqSubmit", async (req, res) => {
     const club_id = clubRows[0].Club_ID;
 
     const [newclubrows] = await connection.execute(
-      'SELECT Club_Head_ID FROM Club WHERE Club_head = ? AND Club_ID = ?',
+      'SELECT Club_Head_ID FROM club WHERE Club_head = ? AND Club_ID = ?',
       [name , club_id]
     );
 
@@ -288,7 +288,7 @@ app.post("/eventReq/reqSubmit", async (req, res) => {
     const club_head_id = newclubrows[0].Club_Head_ID;
 
     const [roomRows] = await connection.execute(
-      'SELECT Room_ID FROM Room WHERE Room_name = ?',
+      'SELECT Room_ID FROM room WHERE Room_name = ?',
       [eventVenue]
     );
     
@@ -303,7 +303,7 @@ app.post("/eventReq/reqSubmit", async (req, res) => {
 
     await connection.execute(
 
-      'INSERT INTO Event (Event_name, Event_date, Event_time, Event_description,Club_Head_id, Event_End_Time,Room_ID, Approved, Budget) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      'INSERT INTO event (Event_name, Event_date, Event_time, Event_description,Club_Head_id, Event_End_Time,Room_ID, Approved, Budget) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
       [eventName,eventDate,eventStartTime,eventDesc,club_head_id, eventEndTime, room_id, "waiting", eventBudget]
     );  
     connection.release();

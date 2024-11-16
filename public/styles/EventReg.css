@@ -143,6 +143,21 @@ body {
     overflow: hidden;
 }
 
+.eventBox.approved {
+    background-color: #d4edda; /* Light green background for approved events */
+    border-color: #c3e6cb; /* Border color for approved events */
+}
+
+.eventBox.waiting {
+    background-color: #fff3cd; /* Light yellow background for waiting events */
+    border-color: #ffeeba; /* Border color for waiting events */
+}
+
+.eventBox.rejected {
+    background-color: #f8d7da; /* Light red background for rejected events */
+    border-color: #f5c6cb; /* Border color for rejected events */
+}
+
 .eventDetails {
     display: flex;
     justify-content: space-between;
