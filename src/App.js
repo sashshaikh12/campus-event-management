@@ -14,6 +14,15 @@ import FacultyInfo from "./components/Dashboard/HOD/facultyinfo";
 import EventInfo from "./components/Dashboard/HOD/eventinfo";
 import RoomDash from "./components/Dashboard/Room_Manager/RoomDash";
 import StudentEventReg from "./components/Dashboard/Student/StudentEventReg";
+import StudentEventRegForm from "./components/Dashboard/Student/StudentEventRegForm";
+import RoomService from "./components/Dashboard/Student/RoomService";
+import FacultyDash from "./components/Dashboard/Faculty/FacultyDash";
+import FacultyShowEvents from "./components/Dashboard/Faculty/FacultyShowEvents";
+import FacultyClubEvents from "./components/Dashboard/Faculty/FacultyClubEvents";
+import AttendanceSheet from "./components/Dashboard/Faculty/AttendanceSheet";
+import GiveAppeal from "./components/Dashboard/Student/giveAppeal";
+import AttendanceSummary from "./components/Dashboard/Faculty/AttendanceSummary";
+import PopularEvents from "./components/Dashboard/Faculty/PopularEvents";
 
 export default function App() {
   return (
@@ -33,6 +42,15 @@ export default function App() {
         <Route path="/events" element={<EventInfo/>}/>
         <Route path="/roomdash" element={<RoomDash/>}/>
         <Route path="/studentEventReg" element={<StudentEventReg/>}/>
+        <Route path="/studentEventRegForm" element={<StudentEventRegForm/>}/>
+        <Route path="/roomService" element={<RoomService/>}/>
+        <Route path="/facultyDash" element={<FacultyDash/>}/>
+        <Route path="/FacultyShowEvents" element={<FacultyShowEvents/>}/>
+        <Route path="/FacultyClubEvents" element={<FacultyClubEvents/>}/>
+        <Route path="/AttendanceSheet" element={<AttendanceSheet/>}/>
+        <Route path="/GiveAppeal" element={<GiveAppeal/>}/>
+        <Route path="/AttendanceSummary" element={<AttendanceSummary/>}/>
+        <Route path="/PopularEvents" element={<PopularEvents/>}/>
       </Routes>
     </BrowserRouter>
   );

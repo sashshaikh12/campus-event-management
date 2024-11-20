@@ -63,7 +63,7 @@
 
 body {
     overflow: visible; /* Hide scrollbars */
-  }
+}
 
 /* ShowRooms.css */
 
@@ -231,4 +231,26 @@ hr {
 .eventButton:active {
     background-color: #004080;
     transform: scale(0.98);
+}
+
+/* Fancy styling for roomService textarea */
+.roomService {
+    margin-bottom: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+    background-color: #f0f0f0; /* Light background color */
+    color: #333; /* Text color */
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 100px; /* Minimum height */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for border and shadow */
+}
+
+.roomService:focus {
+    border-color: #750E21; /* Match the button color */
+    box-shadow: 0 0 5px rgba(117, 14, 33, 0.5); /* Add shadow on focus */
+    outline: none;
 }

@@ -1,10 +1,10 @@
 import React, { useState, useEffect} from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import StudentEventReqNav from "./StudentEventReqNav";
-import StudentEventReqBody from "./StudentEventReqBody";
-import StudentEventRegForm from "./StudentEventRegForm";
+import StudentEventReqNav from "../Student/StudentEventReqNav";
+import StudentEventReqBody from "../Student/StudentEventReqBody";
+import StudentEventRegForm from "../Student/StudentEventRegForm";
 
-function StudentEventReg() {
+function FacultyShowEvents() {
     const [showCards, setShowCards] = useState(true);
     const [selectedEvent, setSelectedEvent] = useState(null);
     const [location, setLocation] = useState("");
@@ -58,25 +58,6 @@ function StudentEventReg() {
                 return "peslogo.png";
         }
     };
-
-    const getRegistrationForm = async() => {
-        const reqbody = { eventID: EventID };
-        try {
-            const response = await fetch("http://localhost:5000/GetCapacityRem", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({reqbody}),
-            });
-            const result = await response.json();
-            console.log(result);
-            
-        } catch (err) {
-            console.error(err.message);
-        }
-        Navigate("/StudentEventRegForm", { state: { eventID: EventID } });
-    }
     
 
     const goBack = () => {
@@ -105,7 +86,6 @@ function StudentEventReg() {
                         <img src={getLocationImage(location.Location)} alt="Event Venue" className="EventVenueImage" />
                     </div>
                     <div className="EventDetailsButtons">
-                        <button className="EventDetailsButton" onClick={getRegistrationForm}>Register</button>
                         <button className="EventDetailsButton" onClick={goBack}>Go back</button>
                     </div>
                 </div>
@@ -114,4 +94,4 @@ function StudentEventReg() {
     );
 }
 
-export default StudentEventReg;
+export default FacultyShowEvents;

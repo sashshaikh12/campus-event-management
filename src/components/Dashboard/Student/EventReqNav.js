@@ -25,6 +25,11 @@ function EventReqNav({ onShowRooms }) {
           }
         else alert("You do not have amy events");
     };
+
+    const ShowRoomService = async () => {
+      navigate("/roomService");
+
+    }
    
     return (
         <div className="studentNav">
@@ -32,7 +37,7 @@ function EventReqNav({ onShowRooms }) {
             <div className="centerButtons">
                 <button onClick={onShowRooms}>Rooms</button>
                 <button onClick={ShowEvents}>Your Events</button>
-                <button>Room Service</button>
+                <button onClick={ShowRoomService}>Pending Room Service</button>
                 <button>HOD Contacts</button>
             </div>
         </div>

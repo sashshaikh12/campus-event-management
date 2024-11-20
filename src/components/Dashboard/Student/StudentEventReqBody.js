@@ -7,7 +7,7 @@ function StudentEventReqBody({SeeDetails}) {
     useEffect(() => {
         const fetchImages = async () => {
             try {
-                let result = await fetch("http://localhost:5000/studentDash", {
+                let result = await fetch("http://localhost:5000/StudentEventRegPics", {
                     method: "GET",
                     headers: {
                         "Content-Type": "application/json",

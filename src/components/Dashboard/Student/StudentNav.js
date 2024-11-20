@@ -31,6 +31,35 @@ function StudentNav()
         else alert("You are not a club head");
     };
 
+    const ShowEventsRegs = async () => {
+
+        const auth = localStorage.getItem("user");
+        const userDetails = JSON.parse(auth);
+        console.log(userDetails);
+        const reqbody = { studentid: userDetails.Student_ID };
+        console.log(reqbody);
+        let result = await fetch("http://localhost:5000/EventRegCheck", {
+            method: "POST",
+            body: JSON.stringify(reqbody),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+        result = await result.json();
+        console.log(result);
+        var cango = result.exists;
+        console.log(result);
+        if (cango) {
+            navigate("/StudentEventReg");
+          }
+        else alert("You are blacklisted");
+
+    };
+
+    const GiveAppeal = async () => {
+        navigate("/giveAppeal");
+    };
+
     
     return(
 
@@ -38,9 +67,9 @@ function StudentNav()
         <img className = "peslogo" src="/newpeslogo.png" alt="pes university logo" />
         <div className="centerButtons">
                 <button type="button" onClick={GetEvents}>Event Request</button>
-                <Link to="/StudentEventReg"><button>Event Register</button></Link>
-                <button>About</button>
-                <button>Contacts</button>
+                {/* <Link to="/StudentEventReg"><button>Event Register</button></Link> */}
+                <button onClick={ShowEventsRegs}>Event Register</button>
+                <button onClick={GiveAppeal}>Appeal</button>
         </div>
         <button className="ProfileButton">Profile</button>
     </div>

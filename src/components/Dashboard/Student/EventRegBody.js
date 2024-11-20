@@ -11,10 +11,12 @@ function EventRegBody() {
     const [eventVenue, setEventVenue] = useState("");
     const [eventDesc, setEventDesc] = useState("");
     const [eventBudget, setEventBudget] = useState("");
+    const [urls, setUrls] = useState("");
+
 
     const handleSubmit = async () => {
         // Handle form submission
-        const reqbody = {name, clubName, eventName, eventDate, eventStartTime, eventEndTime, eventVenue, eventDesc, eventBudget};
+        const reqbody = {name, clubName, eventName, eventDate, eventStartTime, eventEndTime, eventVenue, eventDesc, eventBudget, urls};
         let result = await fetch("http://localhost:5000/eventReq/reqSubmit", {
             method: "post",
             body: JSON.stringify(reqbody),
@@ -34,6 +36,7 @@ function EventRegBody() {
         setEventVenue("");
         setEventDesc("");
         setEventBudget("");
+        setUrls("");
     };
 
     return (
@@ -111,6 +114,14 @@ function EventRegBody() {
                     onChange={(e) => setEventBudget(e.target.value)}
                     required
                 />
+                <input
+                        type="text"
+                        id = "URL"
+                        value={urls}
+                        placeholder="Enter Image URL"
+                        className="LoginInput"
+                        onChange={(e) => setUrls(e.target.value)}
+                    />
                 <textarea
                     id="eventdesc"
                     placeholder="Enter Event Description"
