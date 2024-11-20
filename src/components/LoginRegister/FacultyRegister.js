@@ -51,7 +51,6 @@ export default function FacultyRegister() {
       return;
     }
     const reqbody = { name, email, password, department, phone ,role:"faculty" };
-    console.warn(reqbody);
     let result = await fetch("http://localhost:5000/faculty-register", {
       method: "post",
       body: JSON.stringify(reqbody),

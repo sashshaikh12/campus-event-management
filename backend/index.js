@@ -409,6 +409,7 @@ app.post("/approveEvent",async(req,res)=>{
     const [rows] = await connection.execute("UPDATE Event SET Approved = ? WHERE Event_ID = ?"
       ,[approval,id]
     );
+    
     connection.release();
     res.send(rows);
   }catch(e){
@@ -549,6 +550,15 @@ app.post("/GiveAttendanceSheet", async (req, res) => {
       'SELECT * FROM registration WHERE event_id = ?',
       [event_id]
     );
+app.get("/roominfo", async (req, res) => {
+  try {
+    const connection = await pool.getConnection();
+    const [rows] = await connection.execute(`
+      SELECT *
+      FROM room_services rs
+      JOIN Event e ON rs.event_id = e.Event_ID
+      JOIN Room r ON e.room_id = r.Room_ID
+    `);
     connection.release();
     res.send(rows);
   } catch (error) {
@@ -747,10 +757,11 @@ app.get("/mostBookedRooms", async (req, res) => {
   }
 });
 
-
-
-
-
+ }catch(e){
+    console.error(e);
+    res.status(500).send("Could not retrieve room services");
+  }
+});
 
 app.listen(5000,()=>{
     console.log("Everybody")

@@ -1,0 +1,84 @@
+.rooms {
+    margin: 20px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.rooms-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.toggle-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    margin-right: 10px;
+    color: #007bff;
+}
+
+.toggle-button:hover {
+    color: #0056b3;
+}
+
+.form-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.rooms-content.show {
+    display: block;
+}
+
+.rooms-content.hide {
+    display: none;
+}
+
+.roomform {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: transform 0.2s;
+}
+
+.roomform:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.room-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 20px;
+    border-radius: 5px;
+}
+
+.roomformdetails {
+    display: flex;
+    flex-direction: column;
+}
+
+.roomformdetails p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.room-name span,
+.description span,
+.room-location span,
+.room-capacity span {
+    font-weight: bold;
+    color: #333;
+}
