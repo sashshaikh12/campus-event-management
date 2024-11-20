@@ -380,6 +380,7 @@ app.post("/approveEvent",async(req,res)=>{
     const [rows] = await connection.execute("UPDATE Event SET Approved = ? WHERE Event_ID = ?"
       ,[approval,id]
     );
+    
     connection.release();
     res.send(rows);
   }catch(e){
@@ -394,7 +395,7 @@ app.post("/getLocation", async (req, res) => {
   try {
       const connection = await pool.getConnection();
       const [rows] = await connection.execute(
-          'SELECT * FROM room WHERE Room_ID = ?',
+          'SELECT * FROM Room WHERE Room_ID = ?',
           [roomid]
       );
       connection.release();
@@ -406,6 +407,23 @@ app.post("/getLocation", async (req, res) => {
   } catch (error) {
       console.error(error);
       res.status(500).send("Server error");
+  }
+});
+
+app.get("/roominfo", async (req, res) => {
+  try {
+    const connection = await pool.getConnection();
+    const [rows] = await connection.execute(`
+      SELECT *
+      FROM room_services rs
+      JOIN Event e ON rs.event_id = e.Event_ID
+      JOIN Room r ON e.room_id = r.Room_ID
+    `);
+    connection.release();
+    res.send(rows);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Could not retrieve room info from the database");
   }
 });
 
