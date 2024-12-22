@@ -1,0 +1,54 @@
+/* MostBookedRooms.css */
+
+.mostBookedRoomsNav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #f8f8f8;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mostBookedRoomsLogo {
+    height: 50px;
+}
+
+.mostBookedRoomsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+}
+
+.mostBookedRoomBox {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mostBookedRoomBox:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.mostBookedRoomBox h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.mostBookedRoomBox p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.mostBookedRoomBox p strong {
+    color: #333;
+}

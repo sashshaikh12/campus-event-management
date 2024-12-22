@@ -63,7 +63,7 @@
 
 body {
     overflow: visible; /* Hide scrollbars */
-  }
+}
 
 /* ShowRooms.css */
 
@@ -115,4 +115,142 @@ body {
 
 .EventSubmitButton{
     margin-top: 10%;
+}
+
+.eventsContainer {
+    display: inline-flex; /* Display the boxes in a row */
+    flex-wrap: wrap; /* Allow the boxes to wrap to the next line if they don't fit */
+    gap: 5%;
+    padding: 20px;
+}
+
+.eventBox {
+    background-color: #e0f7e9; /* Light green background color */
+    border: 1px solid #b2dfdb; /* Border color to complement the background */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* width: calc(50% - 20px); Adjust the width to fit two boxes in a row */
+    margin-bottom: 2%;
+    margin-top: 2%;
+    margin-left: 2%;
+    gap: 10px;
+    width: 80vh;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    overflow: hidden;
+}
+
+.eventBox.approved {
+    background-color: #d4edda; /* Light green background for approved events */
+    border-color: #c3e6cb; /* Border color for approved events */
+}
+
+.eventBox.waiting {
+    background-color: #fff3cd; /* Light yellow background for waiting events */
+    border-color: #ffeeba; /* Border color for waiting events */
+}
+
+.eventBox.rejected {
+    background-color: #f8d7da; /* Light red background for rejected events */
+    border-color: #f5c6cb; /* Border color for rejected events */
+}
+
+.eventDetails {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.eventDateTime {
+    align-self: flex-start;
+}
+
+.eventVenueLocation {
+    align-self: flex-end;
+    text-align: right;
+}
+
+.eventBox h1 {
+    color: #388e3c; /* Dark green color for the event name */
+}
+
+.eventBox h2 {
+    color: #2e7d32; /* Slightly lighter green color for the event description */
+}
+
+.eventBox h3 {
+    color: #1b5e20; /* Darker green color for the details */
+}
+
+hr {
+    border: solid;
+    height: 0px;
+    background: #b2dfdb; /* Color to complement the event box */
+    margin: 10px 0;
+}
+
+.eventInput {
+    margin-bottom: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+    background-color: #f0f0f0; /* Light background color */
+    color: #333; /* Text color */
+}
+
+.eventInput:focus {
+    border-color: #750E21; /* Match the button color */
+    outline: none;
+}
+
+.eventButton {
+    padding: 10px 20px;
+    background-color: #750E21; /* Match the button color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+.eventButton:hover {
+    background-color: #F05941; /* Match the hover color */
+    transform: scale(1.05);
+}
+
+.eventButton:active {
+    background-color: #004080;
+    transform: scale(0.98);
+}
+
+/* Fancy styling for roomService textarea */
+.roomService {
+    margin-bottom: 16px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+    background-color: #f0f0f0; /* Light background color */
+    color: #333; /* Text color */
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 100px; /* Minimum height */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for border and shadow */
+}
+
+.roomService:focus {
+    border-color: #750E21; /* Match the button color */
+    box-shadow: 0 0 5px rgba(117, 14, 33, 0.5); /* Add shadow on focus */
+    outline: none;
 }

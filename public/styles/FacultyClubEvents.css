@@ -1,0 +1,184 @@
+/* FacultyClubEvents.css */
+
+.facultyNav {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    /*background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);*/
+    background: white;
+    height: 120px;
+    border-bottom-right-radius: 40%;
+    border-bottom-left-radius: 40%;
+}
+
+.facultyLogo {
+    position: relative;
+    bottom: 8%;
+    width: 200px;
+    height: 80px;
+}
+
+.facultyEventsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+}
+
+.facultyEventBox {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.facultyEventBox:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.facultyEventBox h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.facultyEventBox p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.facultyAttendanceButton {
+    padding: 10px 20px;
+    background-color: #750E21;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.facultyAttendanceButton:hover {
+    background-color: #F05941;
+    transform: scale(1.05);
+}
+
+.facultyAttendanceButton:active {
+    background-color: #004080;
+    transform: scale(0.98);
+}
+
+
+
+
+
+
+
+.sheet-title {
+    text-align: center;
+    margin: 20px 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #4b0082; /* Indigo color */
+    background: linear-gradient(45deg, #ff7eb3, #ff758c, #ff6b67, #f56d85);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-animation 6s ease infinite;
+}
+
+/* Background gradient animation */
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.attendance-table {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+table {
+    width: 80%;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #007bff;
+    color: white;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+table td {
+    font-size: 14px;
+}
+
+.present-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-right: 5px;
+}
+
+.absent-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.present-btn:hover {
+    background-color: #218838;
+}
+
+.absent-btn:hover {
+    background-color: #c82333;
+}
+
+.present-row {
+    background-color: #d4edda;
+}
+
+.absent-row {
+    background-color: #f8d7da;
+}

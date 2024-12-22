@@ -10,9 +10,33 @@ function EventRegBody() {
     const [eventEndTime, setEventEndTime] = useState("");
     const [eventVenue, setEventVenue] = useState("");
     const [eventDesc, setEventDesc] = useState("");
+    const [eventBudget, setEventBudget] = useState("");
+    const [urls, setUrls] = useState("");
 
-    const handleSubmit = () => {
+
+    const handleSubmit = async () => {
         // Handle form submission
+        const reqbody = {name, clubName, eventName, eventDate, eventStartTime, eventEndTime, eventVenue, eventDesc, eventBudget, urls};
+        let result = await fetch("http://localhost:5000/eventReq/reqSubmit", {
+            method: "post",
+            body: JSON.stringify(reqbody),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+
+        result = await result.json();
+        console.log(result);
+        setName("");
+        setClubName("");
+        setEventName("");
+        setEventDate("");
+        setEventStartTime("");
+        setEventEndTime("");
+        setEventVenue("");
+        setEventDesc("");
+        setEventBudget("");
+        setUrls("");
     };
 
     return (
@@ -81,6 +105,23 @@ function EventRegBody() {
                     onChange={(e) => setEventVenue(e.target.value)}
                     required
                 />
+                <input
+                    type="text"
+                    id="budget"
+                    placeholder="Enter Budget"
+                    className="LoginInput"
+                    value={eventBudget}
+                    onChange={(e) => setEventBudget(e.target.value)}
+                    required
+                />
+                <input
+                        type="text"
+                        id = "URL"
+                        value={urls}
+                        placeholder="Enter Image URL"
+                        className="LoginInput"
+                        onChange={(e) => setUrls(e.target.value)}
+                    />
                 <textarea
                     id="eventdesc"
                     placeholder="Enter Event Description"

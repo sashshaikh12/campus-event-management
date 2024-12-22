@@ -1,0 +1,79 @@
+/* GiveAppeal.css */
+
+.appealNav {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    /*background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);*/
+    background: white;
+    height: 120px;
+    border-bottom-right-radius: 40%;
+    border-bottom-left-radius: 40%;
+}
+
+.appealLogo {
+    position: relative;
+    bottom: 8%;
+    width: 200px;
+    height: 80px;
+}
+
+.appealContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.appealForm {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.appealLabel {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+    width: 100%;
+    text-align: left;
+}
+
+.appealInput {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+.appealButton {
+    padding: 10px 20px;
+    background-color: #750E21; /* Match the button color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+.appealButton:hover {
+    background-color: #F05941; /* Match the hover color */
+    transform: scale(1.05);
+}
+
+.appealButton:active {
+    background-color: #004080;
+    transform: scale(0.98);
+}

@@ -1,6 +1,6 @@
 import React from "react";
 import StudentNav from "./StudentNav";
-import Slider from "./Slider";
+import Slider from "../Slider";
 
 function StudentDash() {
     return (
